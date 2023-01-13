@@ -1,0 +1,12 @@
+#!/bin/bash
+
+url='https://superfn.com/trent/cli'
+
+com=$(curl -s 'https://superfn.com/trent/cli' \
+  --data-urlencode "command=$*")
+
+>&2 echo $com
+
+echo $com | bash - | tee /tmp/aicli
+
+
