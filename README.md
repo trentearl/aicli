@@ -8,8 +8,11 @@ This is a collection of scripts (currently just one) to allow you to use Ai as a
 This takes a prompt as arguments and runs the command through bash
 
 
-[My blog post on this](https://earlearlearl.com/posts/ai-bash-part-01)
+[My blog post on this](https://earlearlearl.com/posts/aibash-openai-command-line)
 
+---
+
+**Warning**: this can have a destructive impact on your system, please don't blame me if you it overwrites or deletes a file you didn't expect or something similar.
 
 ---
 
