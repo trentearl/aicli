@@ -1,12 +1,54 @@
 #!/bin/bash
 
+if [[ "$1" == "-h" || "$1" == "--help" || $# -eq 0 ]]; then
+    echo "aibash - Drive command line with Ai prompts"
+    echo ""
+    echo "Usage: aibash [-y|--yes] [-s|--simulate] [<text>]"
+    echo ""
+    echo "Arguments:"
+    echo "-y, --yes:     Execute the command without prompting for confirmation"
+    echo "-s, --simulate:    Simulate the command without actually executing it"
+    echo "<text>:    Any amount of text to be passed as prompt to ai"
+    echo ""
+    echo ""
+    echo "Example:"
+    echo "aibash find all files in current directory with extension yaml or yml"
+    exit 64
+fi
+
+YES="no"
+if [[ "$1" == "-y" || "$1" == "--yes" ]]; then
+    YES="yes"
+    shift
+fi
+
+SIMULATE="no"
+if [[ "$1" == "-s" || "$1" == "--simulate" ]]; then
+    SIMULATE="yes"
+    shift
+fi
+
+ARGS=("$*")
+
 url='https://superfn.com/trent/cli'
 
 com=$(curl -s 'https://superfn.com/trent/cli' \
   --data-urlencode "command=$*")
 
+# check simulate
+if [[ "$SIMULATE" == "yes" ]]; then
+    echo "$com"
+    exit 0
+fi
+
 >&2 echo $com
 
-echo $com | bash - | tee /tmp/aicli
-
-
+if [[ "$YES" == "yes" ]]; then
+    echo $com | bash -
+else
+    read -p "Execute command? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo $com | bash -
+    fi
+fi

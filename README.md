@@ -5,8 +5,16 @@ This is a collection of scripts (currently just one) to allow you to use Ai as a
 
 ## `aibash`
 
-This takes a prompt as arguments and runs the command through bash
+aibash - Drive command line with Ai prompts
 
+```
+Usage: aibash [-y|--yes] [-s|--simulate] [<text>]
+
+Arguments:
+-y, --yes:     Execute the command without prompting for confirmation
+-s, --simulate:    Simulate the command without actually executing it
+<text>:    Any amount of text to be passed as prompt to ai
+```
 
 [My blog post on this](https://earlearlearl.com/posts/aibash-openai-command-line)
 
