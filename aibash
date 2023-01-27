@@ -28,10 +28,6 @@ if [[ "$1" == "-s" || "$1" == "--simulate" ]]; then
     shift
 fi
 
-ARGS=("$*")
-
-url='https://superfn.com/trent/cli'
-
 com=$(curl -s 'https://superfn.com/trent/cli' \
   --data-urlencode "command=$*")
 
